@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+table.list {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    color: #333333;
+}
+table.list thead th {
+	text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 2px solid #0085A1;
+}
+table.list tbody th {
+    width: 40%;
+    padding: 10px;
+    padding-left: 30px;
+    font-weight: normal;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}
+table.list td {
+	text-align: center;
+    width: 20%;
+    padding: 10px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+}

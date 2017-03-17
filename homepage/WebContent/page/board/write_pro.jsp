@@ -8,6 +8,6 @@
 <% String id = session.getAttribute("success").toString(); %>
 <jsp:useBean id="bdao" class="homepage.board.BoardDAO"></jsp:useBean>
 <%
-	bdao.write(bdto, id);
-	response.sendRedirect("list.jsp");
+	int no = bdao.write(bdto, id);
+	response.sendRedirect("detail.jsp?no="+no);
 %>

@@ -15,8 +15,11 @@ public class BoardDAO {
 		return con;
 	}
 	
-	public void write(BoardDTO bdto, String id) throws Exception{ //write 메소드
+	public int write(BoardDTO bdto, String id) throws Exception{ //write 메소드
 		Connection con = this.connect();
+		
+		con.setAutoCommit(false); //수동 커밋. 두 가지 작업을 한 번에 커밋하기 위함.
+		
 		String sql = "insert into board values(board_seq.nextval, ?, sysdate, ?, ?, ?, 0, 0)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, id);
@@ -24,7 +27,16 @@ public class BoardDAO {
 		ps.setString(3, bdto.getTitle());
 		ps.setString(4, bdto.getDetail(BoardDTO.textarea));
 		ps.execute();
+		
+		sql = "select max(no) from board";
+		ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int no = rs.getInt(1); //이름으로 접근하려면 rs.getInt("max(no)");
+		
+		con.commit();
 		con.close();
+		return no;
 	}
 	
 	public ArrayList<BoardDTO> list(String type, String key, int sn, int en) throws Exception{ //글 목록을 불러오는 메소드 (검색과 페이징도 포함)

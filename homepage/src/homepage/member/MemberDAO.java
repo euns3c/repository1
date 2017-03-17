@@ -97,5 +97,16 @@ public class MemberDAO {
 		ps.execute();
 		con.close();
 	}
+	
+	public boolean idOverCheck(String id) throws Exception{ //아이디 중복 확인 메소드
+		Connection con = this.connect();
+		String sql = "select id from member where id=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, id);
+		ResultSet rs = ps.executeQuery();
+		boolean result = rs.next();
+		con.close();
+		return result;
+	}
 }
 

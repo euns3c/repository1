@@ -18,6 +18,16 @@ span{
 </style>
 
 <script>
+	function idOverCheck(id){
+		if(document.f.id.value==""){
+			window.alert("ID를 입력하세요.");
+			document.f.id.select();
+		}else{
+			url = "idOverCheck.jsp?id="+id;
+			window.open(url, "id", "width=300px, height=150px, left=200px");
+		}
+	}
+	
 	function cancel(){
 		var cancel = window.confirm("작성한 정보가 삭제됩니다. 취소하시겠습니까?");
 		if(cancel){
@@ -39,6 +49,7 @@ span{
                     <div class="form-group col-xs-12 floating-label-form-group controls">
                         <label>ID</label>
                         <input type="text" class="form-control" placeholder="*ID" name="id" required onblur="idCh();">
+                        <button type="button" onclick="idOverCheck(document.f.id.value);">ID중복확인</button>&nbsp;&nbsp;
                         <span id="id_res"></span>
                     </div>
                 </div>

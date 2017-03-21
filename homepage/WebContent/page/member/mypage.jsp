@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" errorPage="/page/error/errorPage.jsp" %>
 <html>
 <head>
 <title>My Page</title>

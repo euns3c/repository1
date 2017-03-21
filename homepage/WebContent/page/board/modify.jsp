@@ -1,9 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" errorPage="/page/error/errorPage.jsp" %>
 <%@ page import="homepage.board.BoardDTO" %>
 
 <%@ include file="/page/layout/header.jsp" %>
 <link rel="stylesheet" href="../../css/board.css">
+
+<%
+	String login = (String)session.getAttribute("success");
+	String writer = request.getParameter("writer");
+	if(!writer.equals(login))
+		throw new Exception("비정상적인 방법으로 modify.jsp 접근");
+%>
 
 <style>
 	input[type=text]{
@@ -51,6 +58,7 @@
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 			<form name="f" action="modify_pro.jsp" method="post">
 			<input type="hidden" name="no" value="<%=bdto.getNo()%>">
+			<input type="hidden" name="writer" value="<%=bdto.getId()%>">
 			<table class="list" width="100%">
 			    <thead>
 			    <tr>

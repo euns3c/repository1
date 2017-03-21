@@ -91,7 +91,7 @@ table.reply {
 			        <th scope="row" colspan="2">조회수 <%=bdto.getHit()%>&nbsp;&nbsp;댓글수 <%=bdto.getReply()%></th>
 			        <td>
 			        	<%if(writer.equals(login)){%>
-			        		<input type="button" value="modify" onclick="location.href='modify.jsp?no=<%=bdto.getNo()%>';"> 
+			        		<input type="button" value="modify" onclick="location.href='modify.jsp?no=<%=bdto.getNo()%>&writer=<%=bdto.getId()%>';"> 
 				        	<input type="button" value="delete" onclick="mdelete();"> 
 			        	<%}%>
 			        		<input type="button" value="list" onclick="location.href='list.jsp';">
@@ -139,7 +139,7 @@ table.reply {
 	function mdelete(){
 		var d = window.confirm("정말로 글을 삭제하시겠습니까?");
 		if(d){
-			location.href="delete_pro.jsp?no=<%=bdto.getNo()%>";
+			location.href="delete_pro.jsp?no=<%=bdto.getNo()%>&writer=<%=bdto.getId()%>";
 		}
 	}
 </script>

@@ -19,7 +19,7 @@
 <% }catch(Exception e){ %>
 <%	e.printStackTrace(); %>
 <script>
-	window.alert("가입이 거절되었습니다.");
+	window.alert("중복된 아이디입니다.");
 	history.back();
 </script>
 <% } %>
